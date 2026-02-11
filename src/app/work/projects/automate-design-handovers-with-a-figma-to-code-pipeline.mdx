@@ -1,44 +1,83 @@
 ---
-title: "Automating Design Handovers with a Figma to Code Pipeline"
-publishedAt: "2024-04-01"
-summary: "Explore the enduring debate between using spaces and tabs for code indentation, and why this choice matters more than you might think."
+title: "Moustass Video DevSecOps"
+publishedAt: "2024-04-08"
+summary: "Développement d’une application sécurisée permettant aux clients d’initier des transactions financières et de les confirmer par authentification vidéo.
+"
 images:
-  - "/images/projects/project-01/cover-02.jpg"
-  - "/images/projects/project-01/image-03.jpg"
+  - "/images/projects/moustass/dashboard_admin.png"
+  - "/images/projects/moustass/sonarcloud.png"
+  - "/images/projects/moustass/snyk.png"
+  - "/images/projects/moustass/login.png"
+  - "/images/projects/moustass/mail_code_mfa.png"
+  - "/images/projects/moustass/logs.png"
+
+
+  
 team:
-  - name: "John Doe"
+  - name: "Selene Yu"
     role: "Software Engineer"
-    avatar: "/images/avatar.jpg"
+    avatar: "/images/profil.png"
     linkedIn: "https://www.linkedin.com/company/once-ui/"
-link: "https://once-ui.com/"
+  - name: "Lorant One"
+    role: "Design Engineer"
+    avatar: "/images/projects/project-01/avatar-01.jpg"
+    linkedIn: "https://www.linkedin.com/company/once-ui/"
 ---
 
-## Overview
+## Contexte général
 
-In this project, I focused on automating the often tedious design handover process. The goal was to create a pipeline that converts Figma designs directly into clean, production-ready code. By integrating design tokens, component libraries, and automated workflows, this solution significantly reduced the time spent on translating design assets into code, while maintaining design consistency across the product.
+Moustass Video est une plateforme web sécurisée permettant aux utilisateurs de créer, transmettre et valider des ordres de transactions financières à destination d’un autre utilisateur, au moyen de vidéos authentifiées, chiffrées et signées numériquement via un mécanisme de signature RSA.
 
-## Key Features
+## Les fonctionnalités
 
-- **Figma Plugin Integration**: Developed a custom Figma plugin that extracts design tokens such as colors, typography, and spacing values, and exports them in a format compatible with our codebase.
-- **Code Generation**: Integrated an automated process that translates Figma components into React code using a combination of design tokens and pre-built component templates. This allowed developers to focus more on logic and less on repetitive UI coding.
-- **Continuous Sync**: Established a CI/CD pipeline that continuously synchronizes design changes from Figma to the codebase, ensuring design updates are reflected instantly without manual intervention.
-- **Scalable Design System**: Leveraged a design system that remains the single source of truth for both designers and developers, making it easy to maintain consistency even as the product evolves.
+- **Authentification forte**: Dès l’ouverture de l’application, l’utilisateur est redirigé vers une page de connexion sécurisée.
+Il peut s’authentifier via son compte Google en s’appuyant sur le protocole OAuth 2.0 (Client ID / Client Secret), géré par le backend Spring Boot.
+Après cette première étape d’authentification, une vérification supplémentaire est requise sous la forme d’un code à usage unique (MFA) envoyé par e-mail, renforçant ainsi le niveau de sécurité de l’accès.
+Une fois l’authentification entièrement validée, un jeton JWT (JSON Web Token) est généré et attribué à l’utilisateur.
+Ce jeton permet d’autoriser et de sécuriser les échanges entre les différents services de l’application, tout en assurant la gestion des accès et des rôles, selon que l’utilisateur dispose d’un profil administrateur ou d’un profil utilisateur standard.
+- **Demande d’ordre de transaction**: Pour initier une demande d’ordre de transaction, l’utilisateur émetteur doit renseigner un formulaire dédié en indiquant le montant souhaité et en sélectionnant le destinataire.
+La demande est ensuite complétée par l’enregistrement d’une vidéo d’authentification, laquelle est signée numériquement via un mécanisme de signature RSA.
+La gestion des clés cryptographiques repose sur Vault :
+la clé publique de chaque utilisateur est stockée en base de données ;
+la clé privée elle, est conservée de manière sécurisée dans Vault et n’est accessible qu’au moyen d’un identifiant de clé (Key ID) permettant d’établir la correspondance avec l’utilisateur concerné.
+Une fois la vidéo enregistrée, celle-ci est signée puis chiffrée, garantissant l’authenticité, l’intégrité et la confidentialité de la demande.
+La vidéo sécurisée est alors enregistrée et transmise au destinataire, qui peut la consulter, vérifier la validité de la signature numérique, puis valider ou rejeter la transaction.
+- **Vérification et validation de la signature**: Une fois le message vidéo contenant l’ordre de transaction transmis, le destinataire procède à sa vérification.
+Le système effectue automatiquement le contrôle de la signature numérique associée à la vidéo afin d’en garantir l’authenticité et l’intégrité.
+Après validation de la signature, la vidéo est déchiffrée et rendue accessible au destinataire, qui peut alors la consulter et confirmer ou refuser l’ordre de transaction.
+L’ensemble de ce processus est entièrement automatisé et pris en charge par le backend Spring Boot, sans intervention manuelle de l’utilisateur sur les mécanismes cryptographiques.
+- **Dashboard Administrateur**: Lors de la connexion, le système identifie automatiquement le profil de l’utilisateur, qu’il s’agisse d’un administrateur ou d’un utilisateur standard, et applique les droits d’accès correspondants. Les mots de passe stockés en base de données sont hachés à l’aide de l’algorithme SHA-256, garantissant la protection des informations sensibles.
+Depuis le dashboard administrateur, l’administrateur dispose d’une vue centralisée lui permettant de consulter l’ensemble des demandes d’ordres de transactions, d’accéder à une interface de journalisation (logs) afin de visualiser et tracer les actions réalisées par chaque utilisateur sur la plateforme, ainsi que de recevoir des notifications relatives aux mises à jour et à l’état des envois d’ordres de transaction. Il peut également consulter la liste des émetteurs d’ordres enregistrés dans le système, assurant ainsi un suivi global et un meilleur contrôle des opérations.
+- **Notifications**: Chaque profil, qu’il s’agisse d’un administrateur ou d’un utilisateur standard, dispose d’un système de notifications internes intégré à l’application. Celui-ci permet d’être informé en temps réel de la réception et de l’évolution des demandes d’ordres de transaction émises par les autres utilisateurs.
 
-## Technologies Used
+## Architecture du projet
 
-- **Figma API**: For extracting design tokens and component data directly from the Figma designs.
-- **React and Next.js**: For building the front-end codebase with clean, reusable components.
-- **Styled-Components**: For managing styles dynamically using design tokens.
-- **GitHub Actions**: For automating the pipeline and syncing design changes to the repository.
+- **Architecture Hexagonale**: Certaines parties de l’application ont été développées selon le modèle d’architecture hexagonale (Ports & Adapters). Cette approche vise à isoler la logique métier des aspects techniques (interfaces, bases de données, services externes), afin de faciliter la maintenance, d’améliorer la scalabilité et de permettre une évolution maîtrisée de l’application. Elle contribue également à renforcer la robustesse, la testabilité et la pérennité du système. Dans ce projet, l’architecture hexagonale a été principalement appliquée aux modules d’authentification ainsi qu’à la gestion et à la manipulation des clés asymétriques, assurées via Vault.
+- **Architecture Microservices**: Le reste de l’application repose sur une architecture microservices, dont l’objectif est de découper l’application en services indépendants et faiblement couplés. Cette approche permet de séparer les responsabilités fonctionnelles, de faciliter le déploiement, d’améliorer la scalabilité et de mettre en avant l’évolutivité de la plateforme. Chaque microservice peut ainsi évoluer, être maintenu ou déployé indépendamment, tout en contribuant à la résilience globale du système.
 
-## Challenges and Learnings
+## Technologies et outils utilisés
 
-One of the biggest challenges was ensuring that the generated code was clean and maintainable. This involved setting up intelligent mapping between Figma components and React code structures, as well as managing edge cases like responsive design and conditional rendering. Additionally, the continuous synchronization required a robust error-handling system to prevent conflicts during development.
+- **Spring Boot**: est utilisé pour le développement du backend, la mise en œuvre des microservices ainsi que l’application de l’architecture hexagonale. Ce framework a été retenu comme un choix stratégique en raison de sa robustesse, de sa maturité, de ses performances et de son écosystème riche, permettant de concevoir des applications fiables, évolutives et maintenables.
+- **React.JS**: est utilisé pour le développement de la partie frontend et la conception des interfaces visuelles de l’application. Ce choix s’est porté sur React.js en raison de sa flexibilité, de sa performance, de son approche orientée composants et de sa capacité à offrir une expérience utilisateur fluide et réactive, adaptée aux applications web modernes.
+- **MySQL**: Chaque microservice dispose de sa propre base de données, conformément aux principes de l’architecture microservices. MySQL a été retenu comme solution de stockage en raison de sa fiabilité, de sa stabilité, de ses performances éprouvées et de sa large adoption, facilitant ainsi la maintenance, la scalabilité et l’exploitation des données.
+- **HashiCorp Vault**: est utilisé pour la création, la gestion et la sécurisation des clés cryptographiques asymétriques (clés publiques et privées). Il permet d’isoler les secrets sensibles, de contrôler les accès aux clés et de garantir un haut niveau de sécurité pour les opérations de signature et de chiffrement au sein de l’application.
+- **JUnit**: pour effectuer les tests unitaires avec Java.
+- **Jira & Notion**: sont utilisés pour la gestion de projet, le suivi des tâches, la planification des sprints et la collaboration au sein de l’équipe. Jira permet d’assurer le pilotage opérationnel et le suivi des tickets, tandis que Notion est utilisé comme espace central de documentation, de partage des connaissances et de structuration des contenus du projet.
+- **SonarCloud**: Utilisé pour l’analyse statique du code, SonarCloud a permis de mesurer la qualité du code, d’identifier les code smells, les bugs potentiels et les failles de sécurité, contribuant ainsi à l’amélioration continue et à la maintenabilité de l’application, avec un objectif de couverture de tests fixé à 80 %
+- **Snyk**: est utilisé pour la détection des vulnérabilités dans les dépendances, les conteneurs et le code source. Il permet d’anticiper les risques de sécurité et de renforcer la sécurité applicative tout au long du cycle de développement.
+- **Postman**: est utilisé pour le test, la validation et la documentation des API REST, facilitant les échanges entre le frontend et le backend ainsi que la vérification des flux fonctionnels et des scénarios de sécurité.
+- **GitHub**: est utilisé pour la gestion du code source, le travail collaboratif, le versionnement et l’intégration des bonnes pratiques de développement, notamment via les pull requests, les revues de code et les workflows CI/CD sur le pipeline.
+- **Docker**: est utilisé pour la conteneurisation des microservices, garantissant la portabilité, la cohérence des environnements et la facilité de déploiement de l’application, aussi bien en développement qu’en production.
 
-## Outcome
+## Problématique et solutions
+- **Problématique**:
+L’enjeu majeur du projet concernait la cohérence architecturale entre une architecture hexagonale, appliquée aux modules sensibles, et une architecture microservices pour le reste de l’application. Cette dualité soulevait la problématique de maintenir une séparation claire des responsabilités tout en assurant une communication efficace et sécurisée entre les composants.
+- **Solutions**:
+La solution retenue a consisté à appliquer l’architecture hexagonale aux éléments critiques, notamment ceux liés à l’authentification et à la gestion cryptographique, afin d’isoler la logique métier des implémentations techniques. Le recours aux microservices pour les autres fonctionnalités a permis de renforcer le découplage, d’améliorer la testabilité et de faciliter l’évolution du système, sans compromettre la robustesse et la sécurité des composants critiques.
 
-The automated Figma to code pipeline has streamlined the handoff process, cutting down design-to-development time by 40%. Designers now have more confidence that their designs will be accurately translated into code, and developers can focus on more complex logic and feature development. This project has proven the value of automation in bridging the gap between design and development.
+## Résultats
 
----
+Le projet a permis de livrer une application sécurisée, reposant sur une architecture moderne, intégrant des mécanismes d’authentification forte, de signature cryptographique et des pratiques DevSecOps assurant qualité, sécurité et évolutivité.
 
-This project demonstrates your ability to leverage automation and streamline workflows, which is highly relevant for design engineering portfolios focused on efficiency and innovation.
+## Lien GitHub du projet
+[https://github.com/Lee-Rudy/video_moustass_DevSecOps.git](https://github.com/Lee-Rudy/video_moustass_DevSecOps.git)

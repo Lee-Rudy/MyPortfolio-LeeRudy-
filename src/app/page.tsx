@@ -16,6 +16,10 @@ import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 
+//spline
+import Spline from '@splinetool/react-spline/next';
+import { TbHandMove } from 'react-icons/tb';
+
 export async function generateMetadata() {
   return Meta.generate({
     title: home.title,
@@ -29,6 +33,7 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+      
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -99,11 +104,38 @@ export default function Home() {
             </Button>
           </RevealFx>
         </Column>
+        <Column fillWidth horizontal="center" gap="12">
+        <Row gap="8" vertical="center" horizontal="center" paddingTop="8">
+            <TbHandMove size={20} style={{ opacity: 0.6 }} />
+            {/* 
+              Pour changer la taille de ce texte, il faut modifier la prop "variant" du composant <Text />.
+              Par exemple, essayez "body-default-l" (plus grand) ou "body-default-xs" (plus petit), 
+              ou toute autre valeur de variant définie dans votre design system.
+              Exemples :
+              <Text variant="body-default-l" ...> ... </Text>
+              <Text variant="body-default-xs" ...> ... </Text>
+            */}
+            <Text variant="body-default-l" onBackground="neutral-weak">
+              Interagissez et faites tourner le modèle 3D (conçu sur Spline 3D "My Rooom Lee Rudy")
+            </Text>
+          </Row>
+          <Spline
+            scene="https://prod.spline.design/RzzDR1QbvpFXKsBy/scene.splinecode"
+            style={{
+              borderRadius: '15px',
+              overflow: 'hidden'
+            }}
+          />
+          
+        </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
+
+      {/* Section Projects - "Building Once UI" */}
+      {/* <RevealFx translateY="16" delay={0.6}>
         <Projects range={[1, 1]} />
-      </RevealFx>
-      {routes["/blog"] && (
+      </RevealFx> */}
+      {/* Section "Mes Skills" avec Posts */}
+      {/* {routes["/blog"] && (
         <Column fillWidth gap="24" marginBottom="l">
           <Row fillWidth paddingRight="64">
             <Line maxWidth={48} />
@@ -111,20 +143,23 @@ export default function Home() {
           <Row fillWidth gap="24" marginTop="40" s={{ direction: "column" }}>
             <Row flex={1} paddingLeft="l" paddingTop="24">
               <Heading as="h2" variant="display-strong-xs" wrap="balance">
-                Latest from the blog
+                Mes Skills
               </Heading>
             </Row>
             <Row flex={3} paddingX="20">
-              <Posts range={[1, 2]} columns="2" />
+              <Posts range={[0, 0]} columns="2" />
             </Row>
           </Row>
           <Row fillWidth paddingLeft="64" horizontal="end">
             <Line maxWidth={48} />
           </Row>
         </Column>
-      )}
-      <Projects range={[2]} />
-      <Mailchimp />
+      )} */}
+      {/* Section Projects supplémentaires */}
+      {/* <Projects range={[8]} /> */}
+      {/* eto raha hanova an'ilay isan'ilay projects eseho : raha izy rehetra dia hatao [2] */}
+      {/* Section Newsletter - "Subscribe to Rudy's Newsletter" */}
+      {/* <Mailchimp /> */}
     </Column>
   );
 }

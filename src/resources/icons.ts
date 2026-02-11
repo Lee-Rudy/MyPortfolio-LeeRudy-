@@ -12,6 +12,13 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiCube,
+  HiServer,
+  HiShieldCheck,
+  HiCubeTransparent,
+  HiSquare3Stack3D,
+  HiCodeBracket,
+  HiCircleStack,
 } from "react-icons/hi2";
 
 import {
@@ -27,9 +34,24 @@ import {
   SiNextdotjs,
   SiFigma,
   SiSupabase,
+  SiNotion,
+  SiJira,
+  SiSpring,
+  SiPython,
+  SiDjango,
+  SiReact,
+  SiFlutter,
+  SiPostgresql,
+  SiMysql,
+  SiSqlite,
+  SiOracle,
+  SiDocker,
+  SiGit,
+  SiPostman,
+  SiSlack,
 } from "react-icons/si";
 
-import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, } from "react-icons/fa6";
+import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, FaBehance } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -58,12 +80,35 @@ export const iconLibrary: Record<string, IconType> = {
   nextjs: SiNextdotjs,
   supabase: SiSupabase,
   figma: SiFigma,
+  notion: SiNotion,
+  jira: SiJira,
+  box: HiCube,
+  java: HiCodeBracket,
+  spring: SiSpring,
+  python: SiPython,
+  django: SiDjango,
+  react: SiReact,
+  flutter: SiFlutter,
+  postgresql: SiPostgresql,
+  mysql: SiMysql,
+  sqlserver: HiCircleStack,
+  sqlite: SiSqlite,
+  oracle: SiOracle,
+  docker: SiDocker,
+  git: SiGit,
+  postman: SiPostman,
+  slack: SiSlack,
+  api: HiServer,
+  security: HiShieldCheck,
+  architecture: HiCubeTransparent,
+  microservices: HiSquare3Stack3D,
   facebook: FaFacebook,
   pinterest: FaPinterest,
   whatsapp: FaWhatsapp,
   reddit: FaReddit,
   telegram: FaTelegram,
   instagram: FaInstagram,
+  behance: FaBehance,
 };
 
 export type IconLibrary = typeof iconLibrary;

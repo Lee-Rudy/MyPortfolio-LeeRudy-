@@ -93,11 +93,12 @@ export default function About() {
             flex={3}
             horizontal="center"
           >
-            <Avatar src={person.avatar} size="xl" />
-            <Row gap="8" vertical="center">
+            
+            <Avatar src={person.avatar} size="xl"/>
+            {/* <Row gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
               {person.location}
-            </Row>
+            </Row> */}
             {person.languages && person.languages.length > 0 && (
               <Row wrap gap="8">
                 {person.languages.map((language, index) => (
@@ -117,7 +118,7 @@ export default function About() {
             vertical="center"
             marginBottom="32"
           >
-            {about.calendar.display && (
+            {/* {about.calendar.display && (
               <Row
                 fitWidth
                 border="brand-alpha-medium"
@@ -133,7 +134,7 @@ export default function About() {
                 }}
               >
                 <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Row paddingX="8">Schedule a call</Row>
+                <Row paddingX="8">Planifier un appel</Row>
                 <IconButton
                   href={about.calendar.link}
                   data-border="rounded"
@@ -141,7 +142,7 @@ export default function About() {
                   icon="chevronRight"
                 />
               </Row>
-            )}
+            )} */}
             <Heading className={styles.textAlign} variant="display-strong-xl">
               {person.name}
             </Heading>
@@ -204,7 +205,7 @@ export default function About() {
 
           {about.work.display && (
             <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
+              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m" onBackground="brand-weak">
                 {about.work.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
@@ -234,6 +235,11 @@ export default function About() {
                         ),
                       )}
                     </Column>
+                    {experience.outils && (
+                      <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
+                        <Text as="span" weight="strong">Outils :</Text> {experience.outils.replace("Outils : ", "")}
+                      </Text>
+                    )}
                     {experience.images && experience.images.length > 0 && (
                       <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
                         {experience.images.map((image, index) => (
@@ -263,7 +269,7 @@ export default function About() {
 
           {about.studies.display && (
             <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
+              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m" onBackground="brand-weak">
                 {about.studies.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
@@ -288,20 +294,21 @@ export default function About() {
                 id={about.technical.title}
                 variant="display-strong-s"
                 marginBottom="40"
+                onBackground="brand-weak"
               >
                 {about.technical.title}
               </Heading>
               <Column fillWidth gap="l">
                 {about.technical.skills.map((skill, index) => (
                   <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text id={skill.title} variant="heading-strong-l">
+                    <Text id={skill.title} variant="heading-strong-l" onBackground="brand-weak">
                       {skill.title}
                     </Text>
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
                     </Text>
                     {skill.tags && skill.tags.length > 0 && (
-                      <Row wrap gap="8" paddingTop="8">
+                      <Row wrap gap="12" paddingTop="12">
                         {skill.tags.map((tag, tagIndex) => (
                           <Tag key={`${skill.title}-${tagIndex}`} size="l" prefixIcon={tag.icon}>
                             {tag.name}

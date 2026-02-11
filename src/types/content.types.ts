@@ -98,6 +98,9 @@ export interface Home extends BasePageConfig {
     display: boolean;
     title: React.ReactNode;
     href: string;
+    target?: "_blank" | "_self" | "_parent" | "_top";
+    rel?: string;
+    download?: boolean | string;
   };
   /** The sub text which appears below the headline */
   subline: React.ReactNode;

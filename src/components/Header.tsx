@@ -37,7 +37,8 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" })
     return () => clearInterval(intervalId);
   }, [timeZone, locale]);
 
-  return <>{currentTime}</>;
+  // return <>{currentTime}</>;
+  return <></>;
 };
 
 export default TimeDisplay;
@@ -73,7 +74,7 @@ export const Header = () => {
         }}
       >
         <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Row s={{ hide: true }}>{person.location}</Row>}
+          {/* Location::{display.location && <Row s={{ hide: true }}>{person.location}</Row>} */}
         </Row>
         <Row fillWidth horizontal="center">
           <Row
