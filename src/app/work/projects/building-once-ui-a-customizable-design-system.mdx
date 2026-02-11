@@ -1,27 +1,19 @@
+
 ---
-title: "RaviCheck - Ravinala Airports"
+title: "Moustass Video DevSecOps"
 publishedAt: "2024-04-08"
-summary: "Développement d’un système dynamique de transport par pointage exploité
-et synchronisation Push / Pull.
+summary: "Développement d’une application sécurisée permettant aux clients d’initier des transactions financières et de les confirmer par authentification vidéo.
 "
 images:
-  - "/images/projects/ravicheck/web/carte3.png"
-  - "/images/projects/ravicheck/web/carte6.png"
-  - "/images/projects/ravicheck/web/carte7.png"
-  - "/images/projects/ravicheck/web/stat_cars1.png"
-  - "/images/projects/ravicheck/web/stat_consommation1.png"
-  - "/images/projects/ravicheck/mobile/login1.jpeg"
-  - "/images/projects/ravicheck/mobile/menu.jpeg"
-  - "/images/projects/ravicheck/mobile/pointage1.jpeg"
-  - "/images/projects/ravicheck/mobile/pointage3.jpeg"
-  - "/images/projects/ravicheck/mobile/historique1.jpeg"
-  - "/images/projects/ravicheck/mobile/historique2.jpeg"
-  - "/images/projects/ravicheck/ArchitectureRaviCheck.png"
-  - "/images/projects/ravicheck/card_visit.jpg"
-  - "/images/projects/ravicheck/mockup.png"
- 
+  - "/images/projects/moustass/dashboard_admin.png"
+  - "/images/projects/moustass/sonarcloud.png"
+  - "/images/projects/moustass/snyk.png"
+  - "/images/projects/moustass/login.png"
+  - "/images/projects/moustass/mail_code_mfa.png"
+  - "/images/projects/moustass/logs.png"
 
 
+  
 team:
   - name: "Selene Yu"
     role: "Software Engineer"
@@ -35,107 +27,58 @@ team:
 
 ## Contexte général
 
-Ravichek est une solution issue d’une analyse des limites des outils manuels utilisés pour le pilotage des opérations de transport du personnel au sein de Ravinala Airports. Ces méthodes, chronophages et sources d’erreurs, ont motivé le développement d’une application web interne et d’une application mobile embarquée et installée sur chaque véhicule, visant à améliorer le gain de temps, l’analyse des données, la conformité aux règles de sécurité et la ponctualité des opérations.
+Moustass Video est une plateforme web sécurisée permettant aux utilisateurs de créer, transmettre et valider des ordres de transactions financières à destination d’un autre utilisateur, au moyen de vidéos authentifiées, chiffrées et signées numériquement via un mécanisme de signature RSA.
 
+## Les fonctionnalités
 
-## Les fonctionnalités web
-
-- **Page Historique**: La page historique permet à l’administrateur de consulter et de rechercher les pointages envoyés par l’application mobile selon une date donnée. Ces pointages incluent :
-● Ramassage (matin) : présence des usagers prévus.
-● Dépôt (soir) : présence des usagers prévus.
-● Imprévus : usagers non prévus sur une liste, mais présents dans un autre véhicule 
-- **Historiques des cars**: Cette vérification permet à l’administrateur de suivre la ponctualité de chaque car en fonction
-du trajet et de l’horaire de départ. Les motifs saisis aident à identifier les causes récurrentes
-de retard et à prendre des décisions pour améliorer la ponctualité, par exemple en avançant
-32
-l’heure de départ ou de ramassage si des embouteillages fréquents sont signalés comme
-motif. 
-- **Carte / Map / Itinéraire**: L'intégration de la carte dans l'application web vise à offrir une visualisation dynamique des trajets pour chaque axe, permettant d'afficher les itinéraires en temps réel avec des points d'arrêt (ramassage ou dépôt) organisés de manière dynamique en fonction de l'ordre croissant des horaires, identifiés par des markers alphabétiques (A, B, C, etc.), la destination finale pour le ramassage étant automatiquement reconnue par l'application comme Ravinala
-Airports Ivato et aussi considéré comme point de départ pour le dépôt.
-● URL position d’un point = District + Fokontany + Lieu (Ramassage ou Dépôt)
-
-- **Consommation totale estimée et coût total**: L’administrateur peut utiliser un
-simulateur basé sur les données de distance et durée fournies par Google Maps
-(Figure 23). Ce simulateur permet de calculer théoriquement la consommation en
-litres et le coût total, affichés dans la section « Prix total » et « Consommation Total
-estimée » . Cela aide l’administrateur à évaluer les ressources nécessaires pour le car
-empruntant cet axe.
-Formule :
-● Consommation total estimée = (consommation litre (100 km) * distance totale ) /
-kilomètres parcourus.
-● Prix total = (Consommation total estimée * prix de l’essence (AR)).
-- **Dashboard et Statistiques**: L’analyse statistique constitue une partie essentielle de l’application web. Sa mise en place a pour objectif d’aider l’administrateur à analyser les données transmises par l’application mobile. Trois types de statistiques sont disponibles :
-● Statistiques des usagers : Trafic et fréquentation.
-● Statistiques des cars : Retards, moyennes de ramassage et dépôt.
-● Statistiques de consommation : Consommation en litres de carburant et kilométrage
-parcouru.
-
-## Les fonctionnalités mobiles
-
-- **Validation d'authentification d’un véhicule**: Lors de l’authentification de chaque véhicule, celui-ci doit se connecter à une connexion internet pour
-s’authentifier auprès du serveur de l’application web. Cette authentification se fait en
-confirmant le nom du car et un mot de passe. Le serveur vérifie ces informations et valide la
-demande de connexion, permettant ainsi de poursuivre l’utilisation de l’application.
-L’administrateur dispose d’une interface web dédiée pour gérer et modifier les informations
-d’authentification de chaque car.
-- **Pointage d’un usager dans un véhicuel / Pull**:
-Pour effectuer un pointage, l’utilisateur accède au menu principal de l’application mobile et sélectionne l’option correspondant à l’opération en cours :
-« Pointage de ramassage » lorsqu’il s’agit de confirmer la prise en charge d’un usager ;
-« Pointage de dépôt » lorsqu’il s’agit d’enregistrer son arrivée au point de destination.
-Avant d’effectuer le pointage, l’utilisateur peut consulter les plannings prévus en sélectionnant l’option « Planning » dans le menu. Il devra ensuite cliquer sur le bouton « Récupérer les ramassages / dépôts » afin de télécharger la liste actualisée des opérations programmées.Une fois la liste chargée, l’application affiche pour chaque usager les informations détaillées suivantes :
-son matricule,
-son nom,
-le nom du véhicule (car) affecté,
-le quartier administratif de résidence (fokontany),
-ainsi que son lieu et horaire de ramassage ou de dépôt.
-
-- **Historique des pointages de ramasasge et dépôt / Push**:
-L’application mobile intègre un module d’historique permettant de consulter l’ensemble des enregistrements de pointage. Les données sont automatiquement classées par date, afin de faciliter la recherche et la traçabilité des opérations effectuées : ● Envoi des données
-Pour transmettre les enregistrements au serveur web, le responsable du véhicule ● Consultation de l'historique dont les informations affichées incluent : kilométrage, date et heure de départ, motif de retard (si applicable), ainsi que le statut de chaque usager (présence, absence ou imprévu).
-
-
+- **Authentification forte**: Dès l’ouverture de l’application, l’utilisateur est redirigé vers une page de connexion sécurisée.
+Il peut s’authentifier via son compte Google en s’appuyant sur le protocole OAuth 2.0 (Client ID / Client Secret), géré par le backend Spring Boot.
+Après cette première étape d’authentification, une vérification supplémentaire est requise sous la forme d’un code à usage unique (MFA) envoyé par e-mail, renforçant ainsi le niveau de sécurité de l’accès.
+Une fois l’authentification entièrement validée, un jeton JWT (JSON Web Token) est généré et attribué à l’utilisateur.
+Ce jeton permet d’autoriser et de sécuriser les échanges entre les différents services de l’application, tout en assurant la gestion des accès et des rôles, selon que l’utilisateur dispose d’un profil administrateur ou d’un profil utilisateur standard.
+- **Demande d’ordre de transaction**: Pour initier une demande d’ordre de transaction, l’utilisateur émetteur doit renseigner un formulaire dédié en indiquant le montant souhaité et en sélectionnant le destinataire.
+La demande est ensuite complétée par l’enregistrement d’une vidéo d’authentification, laquelle est signée numériquement via un mécanisme de signature RSA.
+La gestion des clés cryptographiques repose sur Vault :
+la clé publique de chaque utilisateur est stockée en base de données ;
+la clé privée elle, est conservée de manière sécurisée dans Vault et n’est accessible qu’au moyen d’un identifiant de clé (Key ID) permettant d’établir la correspondance avec l’utilisateur concerné.
+Une fois la vidéo enregistrée, celle-ci est signée puis chiffrée, garantissant l’authenticité, l’intégrité et la confidentialité de la demande.
+La vidéo sécurisée est alors enregistrée et transmise au destinataire, qui peut la consulter, vérifier la validité de la signature numérique, puis valider ou rejeter la transaction.
+- **Vérification et validation de la signature**: Une fois le message vidéo contenant l’ordre de transaction transmis, le destinataire procède à sa vérification.
+Le système effectue automatiquement le contrôle de la signature numérique associée à la vidéo afin d’en garantir l’authenticité et l’intégrité.
+Après validation de la signature, la vidéo est déchiffrée et rendue accessible au destinataire, qui peut alors la consulter et confirmer ou refuser l’ordre de transaction.
+L’ensemble de ce processus est entièrement automatisé et pris en charge par le backend Spring Boot, sans intervention manuelle de l’utilisateur sur les mécanismes cryptographiques.
+- **Dashboard Administrateur**: Lors de la connexion, le système identifie automatiquement le profil de l’utilisateur, qu’il s’agisse d’un administrateur ou d’un utilisateur standard, et applique les droits d’accès correspondants. Les mots de passe stockés en base de données sont hachés à l’aide de l’algorithme SHA-256, garantissant la protection des informations sensibles.
+Depuis le dashboard administrateur, l’administrateur dispose d’une vue centralisée lui permettant de consulter l’ensemble des demandes d’ordres de transactions, d’accéder à une interface de journalisation (logs) afin de visualiser et tracer les actions réalisées par chaque utilisateur sur la plateforme, ainsi que de recevoir des notifications relatives aux mises à jour et à l’état des envois d’ordres de transaction. Il peut également consulter la liste des émetteurs d’ordres enregistrés dans le système, assurant ainsi un suivi global et un meilleur contrôle des opérations.
+- **Notifications**: Chaque profil, qu’il s’agisse d’un administrateur ou d’un utilisateur standard, dispose d’un système de notifications internes intégré à l’application. Celui-ci permet d’être informé en temps réel de la réception et de l’évolution des demandes d’ordres de transaction émises par les autres utilisateurs.
 
 ## Architecture du projet
 
-- **Architecture 3-tiers**: L’application RaviCheck repose sur une architecture à trois niveaux distincts : présentation, logique métier et données. Cette organisation vise à séparer clairement les responsabilités afin d’améliorer la maintenabilité, la sécurité et l’évolutivité du système. Chaque couche remplit un rôle précis et communique avec les autres via des interfaces bien définies.
-- **Couche Présentation** : Elle regroupe l’application mobile développée en Flutter ainsi que l’application web en ReactJS. L’application mobile fonctionne en mode hors ligne grâce à une base locale SQLite, permettant d’enregistrer les pointages même sans connexion Internet. L’application web permet la consultation, le suivi et l’administration des données. Cette couche se limite à l’affichage et à la collecte des informations.
-- **Couche Logique Métier** : Elle est assurée par une API développée en ASP.NET. Cette couche centralise le traitement des requêtes HTTP, applique les règles métier, contrôle la validité des données et assure la communication sécurisée entre les interfaces (mobile et web) et la base de données centrale. Elle constitue le noyau fonctionnel du système.
-- **Couche Données** : Elle repose sur une base de données SQL Server, qui assure le stockage centralisé, la cohérence et la sécurité des informations. Les données synchronisées depuis les tablettes y sont enregistrées et mises à disposition de l’application web via l’API.
-Dans son fonctionnement global, l’application mobile enregistre les données localement, puis les synchronise vers l’API dès qu’une connexion Internet est disponible. L’API traite ensuite ces données et les enregistre dans la base centrale, permettant ainsi leur consultation en temps réel depuis l’interface web. Cette architecture garantit une continuité de service, une séparation claire des responsabilités et une meilleure maîtrise de l’évolution du système.
+- **Architecture Hexagonale**: Certaines parties de l’application ont été développées selon le modèle d’architecture hexagonale (Ports & Adapters). Cette approche vise à isoler la logique métier des aspects techniques (interfaces, bases de données, services externes), afin de faciliter la maintenance, d’améliorer la scalabilité et de permettre une évolution maîtrisée de l’application. Elle contribue également à renforcer la robustesse, la testabilité et la pérennité du système. Dans ce projet, l’architecture hexagonale a été principalement appliquée aux modules d’authentification ainsi qu’à la gestion et à la manipulation des clés asymétriques, assurées via Vault.
+- **Architecture Microservices**: Le reste de l’application repose sur une architecture microservices, dont l’objectif est de découper l’application en services indépendants et faiblement couplés. Cette approche permet de séparer les responsabilités fonctionnelles, de faciliter le déploiement, d’améliorer la scalabilité et de mettre en avant l’évolutivité de la plateforme. Chaque microservice peut ainsi évoluer, être maintenu ou déployé indépendamment, tout en contribuant à la résilience globale du système.
 
 ## Technologies et outils utilisés
 
-- **Agile Scrum**: Le projet a été conduit selon la méthodologie Agile Scrum, organisée en sprints. Les différentes phases ont été structurées en cycles courts et itératifs, permettant de découper le travail en objectifs progressifs et maîtrisés. Cette approche favorise l’adaptation continue du produit grâce à des retours réguliers et à des ajustements successifs. La planification et le suivi des tâches ont été appuyés par un diagramme de Gantt afin d’assurer une vision claire des délais et des livrables.
-
-- **SQL Server (web)**: La base de données choisie pour ce projet sur la partie web est SQL Server, un SGBDR utilisant un langage reconnu
-par sa robustesse, sa sécurité et ses performances élevées,
-elle est idéale pour la gestion des données dans des applications d'entreprise. Elle offre
-également des fonctionnalités avancées comme l'analyse de données, la gestion des
-transactions et des outils d'administration optimisés.
-- **SQLite (mobile)**: La base de données utilisée pour l’application mobile est SQLite3, un SGBDR léger et intégré, conçu pour les applications mobiles et embarquées. Utilisant le langage SQL et sansnécessiter de serveur, il est parfaitement adapté aux environnements à ressources limitées et aux applications offline.
-- **C# ASP.NET Web API (web)**: reconnu pour ses performances, sa sécurité et sa scalabilité adaptéesaux besoins modernes. Il offre un vaste écosystème d’outils et une compatibilité optimale avec Microsoft SQL Server.
-- **React.JS**: un choix stratégique rigoureux pour le développement d’interfaces dynamiques, modulaires et performantes. Sa logique basée sur les composants favorise la réutilisabilité du code, facilite la maintenance et améliore la scalabilité de l’application. Son écosystème riche et sa large adoption garantissent également une évolution pérenne, un support communautaire solide et une intégration aisée avec des API modernes.
-- **Futter (mobile)**: Le choix de Flutter pour RaviCheck répond à des exigences de performance, de fiabilité et de rapidité de développement. Il permet de créer une application fluide et stable pour le pointage quotidien sur tablette, avec une seule base de code principalement déployée sur Android. Associé au langage Dart, il facilite la maintenance et garantit une évolution maîtrisée de l’application.
+- **Spring Boot**: est utilisé pour le développement du backend, la mise en œuvre des microservices ainsi que l’application de l’architecture hexagonale. Ce framework a été retenu comme un choix stratégique en raison de sa robustesse, de sa maturité, de ses performances et de son écosystème riche, permettant de concevoir des applications fiables, évolutives et maintenables.
+- **React.JS**: est utilisé pour le développement de la partie frontend et la conception des interfaces visuelles de l’application. Ce choix s’est porté sur React.js en raison de sa flexibilité, de sa performance, de son approche orientée composants et de sa capacité à offrir une expérience utilisateur fluide et réactive, adaptée aux applications web modernes.
+- **MySQL**: Chaque microservice dispose de sa propre base de données, conformément aux principes de l’architecture microservices. MySQL a été retenu comme solution de stockage en raison de sa fiabilité, de sa stabilité, de ses performances éprouvées et de sa large adoption, facilitant ainsi la maintenance, la scalabilité et l’exploitation des données.
+- **HashiCorp Vault**: est utilisé pour la création, la gestion et la sécurisation des clés cryptographiques asymétriques (clés publiques et privées). Il permet d’isoler les secrets sensibles, de contrôler les accès aux clés et de garantir un haut niveau de sécurité pour les opérations de signature et de chiffrement au sein de l’application.
+- **JUnit**: pour effectuer les tests unitaires avec Java.
+- **Jira & Notion**: sont utilisés pour la gestion de projet, le suivi des tâches, la planification des sprints et la collaboration au sein de l’équipe. Jira permet d’assurer le pilotage opérationnel et le suivi des tickets, tandis que Notion est utilisé comme espace central de documentation, de partage des connaissances et de structuration des contenus du projet.
+- **SonarCloud**: Utilisé pour l’analyse statique du code, SonarCloud a permis de mesurer la qualité du code, d’identifier les code smells, les bugs potentiels et les failles de sécurité, contribuant ainsi à l’amélioration continue et à la maintenabilité de l’application, avec un objectif de couverture de tests fixé à 80 %
+- **Snyk**: est utilisé pour la détection des vulnérabilités dans les dépendances, les conteneurs et le code source. Il permet d’anticiper les risques de sécurité et de renforcer la sécurité applicative tout au long du cycle de développement.
 - **Postman**: est utilisé pour le test, la validation et la documentation des API REST, facilitant les échanges entre le frontend et le backend ainsi que la vérification des flux fonctionnels et des scénarios de sécurité.
 - **GitHub**: est utilisé pour la gestion du code source, le travail collaboratif, le versionnement et l’intégration des bonnes pratiques de développement, notamment via les pull requests, les revues de code et les workflows CI/CD sur le pipeline.
-- **Ngrok**: Utilisé durant la phase de développement et de tests, Ngrok a permis d’exposer temporairement l’API locale ASP.NET sur Internet via un tunnel sécurisé. Cette solution a facilité les tests en conditions réelles entre l’application mobile, l’application web et le serveur backend, sans nécessiter un déploiement immédiat sur un hébergement distant. Ngrok a ainsi permis de valider la communication et la synchronisation des données avant la mise en production.
+- **Docker**: est utilisé pour la conteneurisation des microservices, garantissant la portabilité, la cohérence des environnements et la facilité de déploiement de l’application, aussi bien en développement qu’en production.
 
 ## Problématique et solutions
 - **Problématique**:
-Deux principaux défis ont marqué le projet. Le premier concernait le fonctionnement hors ligne de l’application. Initialement, une solution PWA (Progressive Web App) avait été envisagée pour permettre la collecte des données sur l'application mobile. Toutefois, cette approche nécessitait une connexion Internet initiale afin de télécharger et stocker les ressources via un Service Worker. En pratique, si certaines pages n’avaient pas été consultées en ligne au préalable, elles restaient indisponibles hors connexion, ce qui limitait fortement la fiabilité du système. Le second défi portait sur l’expérience utilisateur. L’application devait être accessible à des profils variés, avec des niveaux de maîtrise numérique différents, ce qui imposait une interface simple, fluide et intuitive.
+L’enjeu majeur du projet concernait la cohérence architecturale entre une architecture hexagonale, appliquée aux modules sensibles, et une architecture microservices pour le reste de l’application. Cette dualité soulevait la problématique de maintenir une séparation claire des responsabilités tout en assurant une communication efficace et sécurisée entre les composants.
 - **Solutions**:
-Pour garantir une véritable autonomie hors ligne, le choix s’est orienté vers le développement d’une application mobile native capable de fonctionner indépendamment d’une connexion Internet préalable, avec stockage local des données et synchronisation ultérieure. Concernant l’expérience utilisateur, un travail approfondi sur l’ergonomie a été réalisé à travers la conception de wireframes, la simplification des parcours utilisateurs et l’optimisation de l’interface afin d’assurer une prise en main rapide et efficace.
+La solution retenue a consisté à appliquer l’architecture hexagonale aux éléments critiques, notamment ceux liés à l’authentification et à la gestion cryptographique, afin d’isoler la logique métier des implémentations techniques. Le recours aux microservices pour les autres fonctionnalités a permis de renforcer le découplage, d’améliorer la testabilité et de faciliter l’évolution du système, sans compromettre la robustesse et la sécurité des composants critiques.
 
 ## Résultats
 
-Pour l’entreprise Ravinala Airports, la mise en place de l’application a permis de résoudre
-des problèmes majeurs au sein de la société. Elle a notamment facilité le suivi de la
-ponctualité de chaque car et des usagers à bord, optimisé la planification et la gestion des usagers sur leurs axes de ramassage et de dépôt, ainsi que la gestion des coûts et de la consommation.
-De plus, l’application a dynamisé, simplifié et allégé la charge de travail des responsables en matière de pointage des présences et de gestion des véhicules. Elle a contribué à réduire
-considérablement l’utilisation des supports papier et des tableurs Excel pour l’enregistrement et le stockage des données, tout en offrant un gain significatif de temps dans l’exécution des tâches.
+Le projet a permis de livrer une application sécurisée, reposant sur une architecture moderne, intégrant des mécanismes d’authentification forte, de signature cryptographique et des pratiques DevSecOps assurant qualité, sécurité et évolutivité.
 
-## Lien GitHub du projet web
-[https://github.com/Lee-Rudy/Ravinala.git](https://github.com/Lee-Rudy/Ravinala.git)
-
-## Lien GitHub du projet mobile
-[ https://github.com/Lee-Rudy/Ravinala-Mobile.git]( https://github.com/Lee-Rudy/Ravinala-Mobile.git)
+## Lien GitHub du projet
+[https://github.com/Lee-Rudy/video_moustass_DevSecOps.git](https://github.com/Lee-Rudy/video_moustass_DevSecOps.git)
