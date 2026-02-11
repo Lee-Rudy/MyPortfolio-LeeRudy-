@@ -107,14 +107,6 @@ export default function Home() {
         <Column fillWidth horizontal="center" gap="12">
         <Row gap="8" vertical="center" horizontal="center" paddingTop="8">
             <TbHandMove size={20} style={{ opacity: 0.6 }} />
-            {/* 
-              Pour changer la taille de ce texte, il faut modifier la prop "variant" du composant <Text />.
-              Par exemple, essayez "body-default-l" (plus grand) ou "body-default-xs" (plus petit), 
-              ou toute autre valeur de variant définie dans votre design system.
-              Exemples :
-              <Text variant="body-default-l" ...> ... </Text>
-              <Text variant="body-default-xs" ...> ... </Text>
-            */}
             <Text variant="body-default-l" onBackground="neutral-weak">
               Interagissez et faites tourner le modèle 3D (conçu sur Spline 3D "My Rooom Lee Rudy")
             </Text>
