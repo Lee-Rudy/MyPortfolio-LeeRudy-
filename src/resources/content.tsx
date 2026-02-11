@@ -63,22 +63,18 @@ const home: Home = {
 
   featured: {
     display: true,
+    href: "/cv/cv.pdf",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    download: "cv.pdf",
     title: (
-      <a
-        href="/cv/cv.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        download="cv.pdf"
-        style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
-      >
-        <Row gap="12" vertical="center">
-          <strong className="ml-4">Télécharger</strong>{" "}
-          <Line background="brand-alpha-strong" vert height="20" />
-          <Text marginRight="4" onBackground="brand-medium">
-            mon CV
-          </Text>
-        </Row>
-      </a>
+      <Row gap="12" vertical="center">
+        <strong className="ml-4">Télécharger</strong>{" "}
+        <Line background="brand-alpha-strong" vert height="20" />
+        <Text marginRight="4" onBackground="brand-medium">
+          mon CV
+        </Text>
+      </Row>
     ),
   },
   
@@ -191,7 +187,6 @@ const about: About = {
         </>,
         ],
         images: [],
-        tools: "Figma, FigJam, Spline 3D, Notion, Slack, JIRA",
       },
 
       {
