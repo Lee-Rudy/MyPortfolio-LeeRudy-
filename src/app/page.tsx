@@ -32,7 +32,7 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <Column maxWidth="m" gap="l" paddingY="8" horizontal="center">
       
       <Schema
         as="webPage"
@@ -47,7 +47,7 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column fillWidth horizontal="center" gap="m">
+      <Column fillWidth horizontal="center" gap="s">
         <Column maxWidth="s" horizontal="center" align="center">
           {home.featured.display && (
             <RevealFx
@@ -104,16 +104,18 @@ export default function Home() {
             </Button>
           </RevealFx>
         </Column>
-        <Column fillWidth horizontal="center" gap="12">
-        <Row gap="8" vertical="center" horizontal="center" paddingTop="8">
+        <Column fillWidth horizontal="center" gap="12" paddingTop="m">
+        <Row gap="8" vertical="center" horizontal="center">
             <TbHandMove size={20} style={{ opacity: 0.6 }} />
-            <Text variant="body-default-l" onBackground="neutral-weak">
+            <Text variant="body-default-s" onBackground="neutral-weak">
               Interagissez et faites tourner le modèle 3D (conçu sur Spline 3D "My Rooom Lee Rudy")
             </Text>
           </Row>
           <Spline
             scene="https://prod.spline.design/RzzDR1QbvpFXKsBy/scene.splinecode"
             style={{
+              width: '100%',
+              height: '500px',
               borderRadius: '15px',
               overflow: 'hidden'
             }}
