@@ -68,20 +68,13 @@ const home: Home = {
     rel: "noopener noreferrer",
     download: "cv.pdf",
     title: (
-      <a 
-  href="/path/to/mon-cv.pdf" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  style={{ textDecoration: 'none', color: 'inherit' }}
->
-  <Row gap="12" vertical="center">
-    <strong className="ml-4">Télécharger</strong>{" "}
-    <Line background="brand-alpha-strong" vert height="20" />
-    <Text marginRight="4" onBackground="brand-medium">
-      mon CV
-    </Text>
-  </Row>
-</a>
+      <Row gap="12" vertical="center">
+        <strong className="ml-4">Télécharger</strong>{" "}
+        <Line background="brand-alpha-strong" vert height="20" />
+        <Text marginRight="4" onBackground="brand-medium">
+          mon CV
+        </Text>
+      </Row>
     ),
   },
   
