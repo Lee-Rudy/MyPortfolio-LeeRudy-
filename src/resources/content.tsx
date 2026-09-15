@@ -1,4 +1,4 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, Blog, Gallery, Hobbies, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -68,13 +68,20 @@ const home: Home = {
     rel: "noopener noreferrer",
     download: "cv.pdf",
     title: (
-      <Row gap="12" vertical="center">
-        <strong className="ml-4">Télécharger</strong>{" "}
-        <Line background="brand-alpha-strong" vert height="20" />
-        <Text marginRight="4" onBackground="brand-medium">
-          mon CV
-        </Text>
-      </Row>
+      <a 
+  href="/path/to/mon-cv.pdf" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  style={{ textDecoration: 'none', color: 'inherit' }}
+>
+  <Row gap="12" vertical="center">
+    <strong className="ml-4">Télécharger</strong>{" "}
+    <Line background="brand-alpha-strong" vert height="20" />
+    <Text marginRight="4" onBackground="brand-medium">
+      mon CV
+    </Text>
+  </Row>
+</a>
     ),
   },
   
@@ -123,9 +130,9 @@ const about: About = {
     title: "Mes expériences",
     experiences: [
       {
-        company: "Blue Valoris Tech - Mauritius",
-        timeframe: "Janvier 2026 - Aujourd'hui",
-        role: "UI/UX Designer",
+        company: "LANTORIAN ENGINE",
+        timeframe: "juin 2025 - juillet 2026",
+        role: "UI/UX Designer - Freelance Remote",
         outils : "Outils et technologies : Figma, FigJam,Spline 3D, Notion, JIRA",
         achievements: [
           <>
@@ -149,6 +156,9 @@ const about: About = {
         <>
         Cohérence et ergonomie : garantie d'interfaces intuitives et accessibles sur tous les supports et responsive design.
         </>,
+        <>
+          Les types de projets réalisés : Sites vitrines, Landing page,  BTP, BPO, agences technologiques, e-commerce, ONG, hôtellerie, restauration, plateformes SaaS, tourisme
+        </>,
         ],
 
         images:[],
@@ -164,36 +174,73 @@ const about: About = {
       },
 
       {
-        company: "LANTORIAN ENGINE - Madagascar",
-        timeframe: "Juin 2025 - Décembre 2025",
-        role: "UI/UX Designer (Freelance)",
-        outils : "Outils et technologies : Figma, FigJam,Spline 3D, Notion, Slack, JIRA",
+        company: "So Talent",
+        timeframe: "Juin 2024 - Février 2026",
+        role: "Software Engineer",
+        outils : "Outils et technologies : PHP (Laravel), PostgreSQL, BootStrap, GitHub ",
+
         achievements: [
           <>
-            <strong>Approche :</strong> orientée accessibilité, clarté, performance et objectifs business.
+          <strong>Projet : Conception et architecture d'applications SaaS, web, mobiles, intégration DevSecOps et optimisation des architectures distribuées.</strong>
           </>,
           <>
-            Chez LANTORIAN ENGINE, j'ai participé à la conception de produits digitaux pour des applications web et mobiles.
+            <strong>SaaS Helpdesk & Ticketing System (Laravel, React, TanStack Query, MySQL) :</strong>
           </>,
           <>
-          Les types de projets réalisés : - Sites vitrines et landing pages
-          - Plateformes BTP, BPO et agences technologiques
-          - E-commerce
-          - Projets pour ONG
-          - Hôtellerie, restauration
-          - Immobilier et l'architecture (La Réunion et Dubaï)
-          - Plateformes SaaS
-          - Tourisme et recrutement international (Canada).
-        </>,
+            Architecture de la plateforme avec API REST Laravel et frontend React (caching avancé via TanStack Query).
+          </>,
+          <>
+            Traitement asynchrone des flux d'emails via un pipeline IMAP bidirectionnel automatisé.
+          </>,
+          <>
+            Sécurisation granulaire (JWT / RBAC) au niveau contrôleur et intégration de notifications temps réel.
+          </>,
+          <>
+            Optimisation SQL (résolution des requêtes N+1) et mise en place de tests automatisés (TDD) avec CI/CD complète (GitHub Actions, SonarCloud, Snyk).
+          </>,
+          <>
+            <strong>Video Message Secure (Java Spring Boot, FastAPI Python, PostgreSQL, Docker) :</strong>
+          </>,
+          <>
+            Conception d'une architecture microservices en adoptant la mise en place d'une Architecture Hexagonale dédiée à la sécurisation des validations de transactions financières internes.
+          </>,
+          <>
+            Implémentation d'une authentification forte (OAuth2, MFA, HashiCorp Vault) et vérification d'ordres financiers par signatures asymétriques RSA.
+          </>,
+          <>
+            Automatisation d'un pipeline CI/CD DevSecOps garantissant la couverture de tests et l'analyse continue des vulnérabilités.
+          </>,
+          <>
+            <strong>Widget Desktop Natif & Productivité (Tauri / Rust, React, SQLite) :</strong>
+          </>,
+          <>
+            Développement d'un widget OS léger sous Tauri (Rust) intégrant une "All Inbox" multi-comptes (Gmail, Outlook) et un module Calendar/To-Do.
+          </>,
+          <>
+            Réduction drastique de l'empreinte mémoire RAM par rapport à Electron grâce aux bindings natifs Rust et au stockage local SQLite.
+          </>,
+          <>
+            <strong>Digitalisation d'une plateforme de formation et coaching (B2B / B2C) (Laravel, PostgreSQL) :</strong>
+          </>,
+          <>
+            Développement des parcours B2C (réservations, suivi) et B2B (comptes entreprise, gestion d'équipes et demandes).
+          </>,
+          <>
+            Analytics : tableau de bord temps réel pour le pilotage des performances, de la fréquentation et de l'administration.
+          </>,
+          <>
+            <strong>Résultat :</strong> centralisation et optimisation du traitement des demandes, supprimant les tâches manuelles.
+          </>,
         ],
         images: [],
       },
 
+
       {
-        company: "Ravinala Airports - Madagascar",
-        timeframe: "Août 2024 - Décembre 2024",
-        role: "Software Developer Developer (Freelance - hybride)",
-        outils : "Outils et technologies : C# (ASP.NET), React.JS, SQL Server, Flutter, SQLite, Postman Agile Scrum, GitHub, Notion, API REST, Ngrok ",
+        company: "Ravinala Airports",
+        timeframe: "Août 2024 - Novembre 2024",
+        role: "Software Enginner (Freelance - hybride)",
+        outils : "Outils et technologies : C# (ASP.NET), React.JS, SQL Server, Flutter, SQLite, Postman, Agile Scrum, GitHub, API REST, Ngrok ",
         achievements: [
           <><strong>Projet : RaviCheck</strong></>,
           <>
@@ -206,6 +253,9 @@ const about: About = {
           Synchronisation bidirectionnelle web/mobile assurant l'analyse des données et la mise à jour en temps réel des informations sur l'application mobile.
           </>,
           <>
+          Synchronisation & Cartographie : Conception d'un moteur de synchronisation bidirectionnelle (offline-first) pour le suivi en temps réel, la géolocalisation et le tracé cartographique.
+          </>,
+          <>
         <strong>Résultats :</strong> amélioration de la prise de décision opérationnelle, réduction des retards et des erreurs de pointage, et renforcement du suivi et de la traçabilité des déplacements, des coûts de consommation et du kilométrage des véhicules, sécurités et persistances des données des applications.
           </>,
         ],
@@ -213,34 +263,28 @@ const about: About = {
       },
 
       {
-        company: "So Talent - Madagascar",
-        timeframe: "Août 2021 - Décembre 2022",
-        role: "Software Developer (Freelance)",
-        outils : "Outils et technologies : PHP (Laravel), PostgreSQL, BootStrap, GitHub ",
-
+        company: "So Talent",
+        timeframe: "Mai 2023 - Juin 2024",
+        role: "UI/UX Designer - Freelance Remote",
+        outils : "Outils et technologies : Figma, FigJam, Notion, JIRA",
         achievements: [
           <>
-          <strong>Projet : Imano Tech</strong>
+            <strong>Approche :</strong> orientée accessibilité, clarté, performance et objectifs business.
           </>,
           <>
-            Conception d'une application de gestion des formations et du coaching.
+            Conception de maquettes UI et prototypes interactifs
           </>,
           <>
-            Publication des formations disponibles avec statut et dates associées.
+          Définition des parcours utilisateurs (UX) et des interactions
           </>,
-          <>
-          Mise en place d'un formulaire de réservation de modules de formation et de coaching.
-        </>,
         <>
-        Développement d'un tableau de bord (Dashboard) permettant le suivi des membres inscrits et des statistiques (nombre de formations réalisées et nombre d'inscrits).
-      </>,
-      <>
-      <strong>Résultats :</strong> Meilleure organisation et visibilité de l'offre de formation, processus d'inscription simplifié et digitalisé pour les utilisateurs, pilotage facilité grâce à des indicateurs clés en temps réel, gain de temps dans le suivi administratif et décisionnel.
-    </>,
+        Réalisation de projets :
+        Sites vitrines, Landing page, plateformes mobiles 
+        </>,
         ],
-        images: [],
-      },
 
+        images:[],
+      },
       
     ],
   },
@@ -254,7 +298,11 @@ const about: About = {
       },
       {
         name: "Licence en Informatique & Design à l'IT University (Madagascar)",
-        description: <>2021 - 2025</>,
+        description: <>2021 - 2024</>,
+      },
+      {
+        name: "Certificat en ReactJS et PostgreSQL",
+        description: <>2024</>,
       },
     ],
   },
@@ -313,34 +361,66 @@ const about: About = {
           <>En tant que Software Engineer, j’adopte une approche orientée client et utilisateur afin de répondre aux besoins fonctionnels et de générer une réelle valeur ajoutée sur le plan business, tout en concevant des architectures robustes, évolutives, performantes et sécurisées.</>
         ),
         tags: [
-          // {
-          //   name: "JavaScript",
-          //   icon: "javascript",
-          // },
           {
             name: "React.js",
             icon: "react",
           },
           {
-            name: "Java",
-            icon: "java",
+            name: "Next.js",
+            icon: "nextjs",
           },
           {
             name: "Spring Boot",
             icon: "spring",
           },
           {
+            name: "FastAPI",
+            icon: "fastapi",
+          },
+          {
+            name: "ASP.NET",
+            icon: "aspnet",
+          },
+          {
+            name: "Laravel",
+            icon: "laravel",
+          },
+          {
+            name: "Tauri",
+            icon: "tauri",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "Langage de programmation",
+        tags: [
+          {
+            name: "Java",
+            icon: "java",
+          },
+          {
             name: "Python",
             icon: "python",
           },
           {
-            name: "Django",
-            icon: "django",
+            name: "Rust",
+            icon: "rust",
           },
           {
-            name: "Flutter",
-            icon: "flutter",
+            name: "PHP",
+            icon: "php",
           },
+          {
+            name: "C#",
+            icon: "csharp",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "SQL",
+        tags: [
           {
             name: "PostgreSQL",
             icon: "postgresql",
@@ -357,16 +437,24 @@ const about: About = {
             name: "SQLite",
             icon: "sqlite",
           },
-          // {
-          //   name: "Oracle",
-          //   icon: "oracle",
-          // },
+        ],
+        images: [],
+      },
+      {
+        title: "Mobile",
+        tags: [
           {
-            name: "API REST",
-            icon: "api",
+            name: "Flutter",
+            icon: "flutter",
           },
+        ],
+        images: [],
+      },
+      {
+        title: "Outils et méthodologies",
+        tags: [
           {
-            name: "Git/GitHub",
+            name: "GitHub",
             icon: "git",
           },
           {
@@ -395,55 +483,46 @@ const about: About = {
           },
           {
             name: "OWASP",
-            icon: "security",
+            icon: "owasp",
           },
           {
             name: "Sonar Cloud",
-            icon: "security",
+            icon: "sonarqube",
           },
           {
             name: "SNYK",
-            icon: "security",
-          },
-          {
-            name: "Burp Suite",
-            icon: "security",
+            icon: "snyk",
           },
           {
             name: "Vault",
-            icon: "security",
+            icon: "vault",
           },
           {
-            name: "UML Diagram",
+            name: "Kafka",
+            icon: "kafka",
+          },
+          {
+            name: "Diagramme UML (Use Case, Class, Séquence, D'activité, Composant, Déploiement)",
             icon: "document",
           },
           {
-            name: "ArchitectureMVC",
+            name: "Architecture (Monolithique, micro services, évènementiels, hexagonale, n-tiers)",
             icon: "architecture",
           },
           {
-            name: "Architecture Hexagonale",
-            icon: "architecture",
+            name: "TDD",
+            icon: "document",
           },
           {
-            name: "Architecture Microservices",
-            icon: "microservices",
+            name: "DDD",
+            icon: "document",
           },
           {
-            name: "Architecture 3-tiers",
-            icon: "architecture",
+            name: "Pipeline CI/CD",
+            icon: "cicd",
           },
         ],
-        images:[],
-        // optional: leave the array empty if you don't want to display images
-        // images: [
-        //   {
-        //     src: "/images/projects/project-01/cover-04.jpg",
-        //     alt: "Project image",
-        //     width: 16,
-        //     height: 9,
-        //   },
-        // ],
+        images: [],
       },
     ],
   },
@@ -521,4 +600,83 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const hobbies: Hobbies = {
+  path: "/hobbies",
+  label: "Mes hobbies",
+  title: `Mes hobbies – ${person.name}`,
+  description: `Discover what ${person.name} enjoys doing outside of work`,
+  items: [
+  {
+    name: "Chess",
+    image: "/images/hobbies/chess.jpg",
+    alt: "Chess",
+    why: (
+      <>
+        Pourquoi ? Un jeu de stratégie, de risque, de réflexion et de décision.
+        Chaque coup peut être fatal, sans point de non-retour.
+      </>
+    ),
+  },
+  {
+    name: "Dessin",
+    image: "/images/hobbies/drawing.jpg",
+    alt: "Dessin, croquis, illustration et bande dessinée",
+    why: (
+      <>
+        Pourquoi ? En adorateur du croquis et de la bande dessinée, mon langage
+        visuel favori. La patience est une vertu, les bonnes choses viennent avec
+        l'apprentissage et la persévérance. On ne vend pas un tableau parce que
+        c'est Picasso qui l'a fait, mais parce que cela lui a pris des années pour
+        tracer un seul trait : la valeur réside dans le temps.
+      </>
+    ),
+  },
+  {
+    name: "Lecture",
+    image: "/images/hobbies/reading.jpg",
+    alt: "Lecture",
+    why: (
+      <>
+        Pourquoi ? Une porte vers le savoir. La maturité et la sagesse se gagne à travers la connaissance
+        et l'expérience.
+      </>
+    ),
+  },
+  {
+    name: "Guitare",
+    image: "/images/hobbies/guitare.jpg",
+    alt: "Guitare",
+    why: (
+      <>
+        Pourquoi ? Mon espace de liberté pour m'évader et jouer par pur plaisir, tout en
+        nourrissant et libérant mes émotions.
+      </>
+    ),
+  },
+  {
+    name: "Tennis",
+    image: "/images/hobbies/tennis.jpg",
+    alt: "Tennis",
+    why: (
+      <>
+        Pourquoi ? Une confrontation avec soi-même. Je le pratique pour mon corps et mon
+        esprit.
+      </>
+    ),
+  },
+  {
+    name: "Basket Ball",
+    image: "/images/hobbies/basketball.jpg",
+    alt: "Basket Ball",
+    why: (
+      <>
+        Pourquoi ? J'ai pour philosophie : seul je suis fort, mais ensemble je deviens meilleur.
+        Travailler le corps et l'esprit seul ne suffit pas ; savoir travailler en
+        équipe est aussi un atout précieux pour le développement de soi.
+      </>
+    ),
+  },
+],
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, hobbies };

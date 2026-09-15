@@ -243,3 +243,21 @@ export interface Gallery extends BasePageConfig {
     orientation: string;
   }>;
 }
+
+/**
+ * Hobbies page configuration.
+ * @description Configuration for the Hobbies page: an interactive, click-to-expand showcase of personal interests.
+ */
+export interface Hobbies extends BasePageConfig {
+  /** List of hobbies */
+  items: Array<{
+    /** Hobby name */
+    name: string;
+    /** Image source path */
+    image: string;
+    /** Image alt text */
+    alt: string;
+    /** Short "why I like it" description shown when the item is expanded */
+    why: React.ReactNode;
+  }>;
+}
