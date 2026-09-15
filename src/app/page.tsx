@@ -112,6 +112,7 @@ export default function Home() {
             </Text>
           </Row>
           <Spline
+            // scene="https://prod.spline.design/RzzDR1QbvpFXKsBy/scene.splinecode"
             scene="https://prod.spline.design/RzzDR1QbvpFXKsBy/scene.splinecode"
             style={{
               width: '100%',
