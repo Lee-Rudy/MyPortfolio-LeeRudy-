@@ -1,24 +1,28 @@
+:root {
+  /* Override the built-in "blue" palette to use #544BF6 */
+  /* Fine-tune at: https://once-ui.com/customize */
+  --scheme-blue-100:  #060512;
+  --scheme-blue-200:  #0d0b2b;
+  --scheme-blue-300:  #11099b;
+  --scheme-blue-400:  #1004e4;
+  --scheme-blue-500:  #4e45f7;
+  --scheme-blue-600:  #817afa;
+  --scheme-blue-700:  #a7a2fd;
+  --scheme-blue-800:  #cecbfb;
+  --scheme-blue-900:  #dedcfb;
+  --scheme-blue-1000: #ecebfc;
+  --scheme-blue-1100: #f3f3fc;
+  --scheme-blue-1200: #f8f8fd;
+  --scheme-blue-600-15: #817afa26;
+  --scheme-blue-600-30: #817afa4d;
+  --scheme-blue-600-50: #817afa80;
+}
+
 /* :root {
   /*
   /* Example setup for custom colors */
 /* Generate at: https://once-ui.com/customize */
 /*
-  --scheme-brand-100: #08002f;
-  --scheme-brand-200:  #04025c;
-  --scheme-brand-300:  #1f398e;
-  --scheme-brand-400:  #3856ae;
-  --scheme-brand-500:  #5071cc;
-  --scheme-brand-600:  #6f94f1;
-  --scheme-brand-700:  #8db3ff;
-  --scheme-brand-800:  #b2dbff;
-  --scheme-brand-900:  #bfe8ff;
-  --scheme-brand-1000: #ccf6ff;
-  --scheme-brand-1100: #d2fcff;
-  --scheme-brand-1200: #d2fcff;
-  --scheme-brand-600-10: rgba(111,148,241,0.1);
-  --scheme-brand-600-30: rgba(111,148,241,0.3);
-  --scheme-brand-600-50: rgba(111,148,241,0.5);
-
   --scheme-accent-100:  #030b10;
   --scheme-accent-200:  #0d181d;
   --scheme-accent-300:  #364248;

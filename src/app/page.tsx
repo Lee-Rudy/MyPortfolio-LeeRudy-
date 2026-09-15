@@ -57,17 +57,24 @@ export default function Home() {
               paddingBottom="32"
               paddingLeft="12"
             >
-              <Badge
-                background="brand-alpha-weak"
-                paddingX="12"
-                paddingY="4"
-                onBackground="neutral-strong"
-                textVariant="label-default-s"
-                arrow={false}
+              <a
                 href={home.featured.href}
+                target={home.featured.target}
+                rel={home.featured.rel}
+                download={home.featured.download}
+                style={{ textDecoration: "none", color: "inherit" }}
               >
-                <Row paddingY="2">{home.featured.title}</Row>
-              </Badge>
+                <Badge
+                  background="brand-alpha-weak"
+                  paddingX="12"
+                  paddingY="4"
+                  onBackground="neutral-strong"
+                  textVariant="label-default-s"
+                  arrow={false}
+                >
+                  <Row paddingY="2">{home.featured.title}</Row>
+                </Badge>
+              </a>
             </RevealFx>
           )}
           <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
@@ -112,6 +119,7 @@ export default function Home() {
             </Text>
           </Row>
           <Spline
+            // scene="https://prod.spline.design/RzzDR1QbvpFXKsBy/scene.splinecode"
             scene="https://prod.spline.design/RzzDR1QbvpFXKsBy/scene.splinecode"
             style={{
               width: '100%',

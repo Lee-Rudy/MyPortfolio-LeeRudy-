@@ -1,0 +1,80 @@
+---
+title: "Ticketing System SaaS - Arilyst Technologies"
+publishedAt: "2026-01-15"
+summary: "Plateforme SaaS sécurisée de ticketing permettant de centraliser, suivre et automatiser la gestion des demandes clients, développée en remplacement d'un outil tiers pour Arilyst Technologies."
+images:
+  - "/images/projects/ticketing_system_saas/1.png"
+  - "/images/projects/ticketing_system_saas/2.png"
+  - "/images/projects/ticketing_system_saas/3.png"
+  - "/images/projects/ticketing_system_saas/4.png"
+  - "/images/projects/ticketing_system_saas/5.png"
+  - "/images/projects/ticketing_system_saas/6.png"
+  - "/images/projects/ticketing_system_saas/7.png"
+  - "/images/projects/ticketing_system_saas/8.png"
+  - "/images/projects/ticketing_system_saas/10.png"
+  - "/images/projects/ticketing_system_saas/11.png"
+  - "/images/projects/ticketing_system_saas/9.png"
+
+
+team:
+  - name: "Selene Yu"
+    role: "Software Engineer"
+    avatar: "/images/profil.png"
+    linkedIn: "https://www.linkedin.com/company/once-ui/"
+  - name: "Lorant One"
+    role: "Design Engineer"
+    avatar: "/images/projects/project-01/avatar-01.jpg"
+    linkedIn: "https://www.linkedin.com/company/once-ui/"
+---
+
+## Contexte général
+
+La plateforme de ticketing développée pour Arilyst Technologies est une application web SaaS sécurisée permettant de centraliser, suivre et automatiser la gestion des demandes clients (tickets de support), depuis leur création jusqu'à leur résolution, tout en assurant un suivi précis du temps passé par les équipes et une traçabilité complète de chaque échange. Conçue en remplacement d'une dépendance à un outil tiers, elle a été pensée dès le départ comme une base évolutive, capable d'accueillir de nouvelles fonctionnalités différenciantes.
+
+## Les fonctionnalités
+
+**Authentification sécurisée** : dès l'ouverture de l'application, l'utilisateur est redirigé vers une page de connexion par e-mail et mot de passe. Le mot de passe est haché avant tout enregistrement en base, jamais stocké en clair. Une fois authentifié, un jeton **JWT (JSON Web Token)**, signé et à durée de vie limitée (3 heures pour l'accès, 24 heures pour le rafraîchissement), est attribué à l'utilisateur. Ce jeton porte également le **rôle** de l'utilisateur (Manager ou Staff), détecté automatiquement à la connexion, permettant au système d'autoriser ou de bloquer chaque action, aussi bien visuellement que côté serveur.
+
+**Gestion des tickets** : cœur de l'application, ce module permet de créer, suivre, filtrer et clôturer les demandes clients. La création d'un ticket bénéficie de plusieurs automatisations (numérotation automatique, préfixage du titre selon le type, brouillon auto-sauvegardé). Le détail d'un ticket regroupe l'ensemble des échanges (réponses publiques envoyées au client, notes internes entre collègues), un historique complet des changements de statut, ainsi que la gestion des collaborateurs et des pièces jointes. Chaque changement de statut déclenche automatiquement l'envoi d'un e-mail de notification au client concerné.
+
+**Suivi du temps (Time Tracker)** : chaque ticket dispose de son propre chronomètre, dont le déclenchement est conditionné au statut du ticket. Ce chronomètre se met automatiquement en pause lorsque l'onglet du navigateur perd le focus, grâce à la Page Visibility API, et empêche qu'un même utilisateur ne cumule du temps sur deux tickets en parallèle, même sur plusieurs onglets ouverts simultanément.
+
+**Réception automatique des e-mails** : une boîte de messagerie dédiée est surveillée en continu (protocole IMAP) ; chaque e-mail reçu y est automatiquement transformé en ticket, sans intervention manuelle, permettant à un client d'ouvrir une demande sans avoir accès à l'application elle-même.
+
+**Notifications** : chaque utilisateur dispose d'un centre de notifications personnel, réparti en deux catégories (échéances dépassées, activité des tickets), consulté à intervalle régulier pour informer en temps quasi réel de l'évolution des demandes qui le concernent.
+
+**Tableaux de bord et rapports** : un tableau de bord synthétise l'activité en cours (tickets en retard, répartition par statut et par priorité, charge de travail par agent), avec des données exportables en CSV, Excel et PDF selon le besoin (données brutes ou document de synthèse mis en forme).
+
+**Gestion des rôles (Manager / Staff)** : l'application distingue deux profils. Le Manager dispose d'un accès complet (clients, produits, utilisateurs, paramétrage des tickets) tandis que le Staff dispose d'un périmètre restreint sur les tickets, pensé pour permettre la collaboration d'équipe tout en évitant qu'un agent ne modifie le travail d'un collègue.
+
+## Architecture du projet
+
+L'application repose sur une **architecture n-tiers découplée** : un frontend en application monopage (SPA), totalement indépendant, communique exclusivement avec un backend exposant une API REST sécurisée. Cette séparation stricte permet de faire évoluer chaque couche indépendamment, sans dépendance directe entre la présentation, la logique métier et l'accès aux données.
+
+Le backend est lui-même **organisé par domaine métier** plutôt que par couche technique : chaque fonctionnalité (tickets, clients, produits, utilisateurs, notifications) dispose de son propre ensemble de contrôleurs, services et entités, ce qui facilite la lisibilité et la maintenance du code. La logique de contrôle d'accès par rôle (RBAC) a par ailleurs été centralisée dans un composant de sécurité unique, réutilisé par l'ensemble des contrôleurs, afin d'éviter toute duplication ou incohérence des règles de visibilité entre les différents points d'entrée de l'API.
+
+Ce choix d'architecture découplée a également été motivé par une vision d'évolution à moyen terme : elle a été pensée dès le départ pour pouvoir accueillir de nouveaux canaux de création de tickets (en plus de l'e-mail et de la saisie manuelle), notamment un futur système de signalement par code QR directement depuis le terrain.
+
+## Technologies et outils utilisés
+
+- **Laravel (PHP)** : utilisé pour le développement du backend et de l'API REST. Ce framework a été retenu pour sa robustesse, sa maturité et son écosystème riche, permettant de concevoir une application fiable, sécurisée et maintenable.
+- **MySQL** : système de gestion de base de données relationnelle retenu pour sa fiabilité et son adéquation avec un modèle de données fortement relationnel (tickets, clients, utilisateurs).
+- **ReactJS (TypeScript)** : utilisé pour le développement du frontend, en raison de sa flexibilité, de son approche orientée composants et de sa capacité à offrir une expérience utilisateur fluide et réactive.
+- **TanStack Query / TanStack Router** : utilisés côté frontend pour la mise en cache des données serveur et le routage basé sur les fichiers, réduisant les appels réseau redondants et accélérant la navigation perçue par l'utilisateur.
+- **Tailwind CSS / shadcn-ui** : utilisés pour la construction rapide et cohérente de l'interface graphique.
+- **JWT (JSON Web Token)** : mécanisme retenu pour l'authentification sans état entre le frontend et l'API, adapté à une architecture SPA découplée.
+- **PHPUnit / Vitest** : utilisés respectivement pour les tests automatisés du backend et du frontend, dans une démarche TDD.
+- **SonarCloud** : utilisé pour l'analyse statique du code, permettant de mesurer la qualité du code, d'identifier les bugs potentiels et les failles de sécurité, avec un objectif de couverture de tests fixé à 80 %.
+- **Snyk** : utilisé pour la détection des vulnérabilités dans les dépendances et le code source, afin d'anticiper les risques de sécurité tout au long du développement.
+- **GitHub / GitHub Actions** : utilisés pour la gestion du code source, le travail collaboratif (pull requests, revues de code) et l'automatisation du pipeline de tests et d'analyse de qualité (CI/CD).
+- **JIRA** : utilisé pour la planification des sprints et le suivi des tâches selon la méthodologie Agile Scrum.
+
+## Problématique et solutions
+
+**Problématique** : l'enjeu majeur du projet consistait à construire, en interne et à partir de zéro, une plateforme capable de remplacer un outil tiers déjà en place, sans sacrifier ni la sécurité, ni la qualité, ni la possibilité de faire évoluer l'outil selon des besoins propres à l'entreprise. Cette exigence supposait de définir une répartition claire des droits entre les différents profils d'utilisateurs (Manager, Staff), sans dupliquer cette logique dans chaque fonctionnalité, tout en garantissant que chaque évolution future du code ne réintroduise pas de régression de sécurité ou de qualité.
+
+**Solutions** : la séparation stricte entre frontend et backend via une API REST a permis de garder chaque couche indépendante et testable séparément. La logique de contrôle d'accès par rôle a été centralisée dans un unique composant de sécurité, réutilisé par l'ensemble des contrôleurs, garantissant une règle unique et cohérente. Enfin, la mise en place d'une chaîne DevSecOps (tests automatisés, analyse de qualité SonarCloud, analyse de vulnérabilités Snyk, intégration continue GitHub Actions) a permis de transformer ces exigences de sécurité et de qualité en vérifications systématiques et automatisées, plutôt qu'en simples recommandations dépendant de la vigilance individuelle.
+
+## Résultats
+
+Le projet a permis de livrer une application sécurisée, reposant sur une architecture moderne et découplée, intégrant une authentification forte par jetons JWT, un contrôle d'accès par rôle centralisé, et des pratiques DevSecOps ayant permis de faire passer le Quality Gate du projet d'un état non validé à un état entièrement conforme (note de sécurité A, couverture de tests de 84,1 % sur 797 tests automatisés), assurant qualité, sécurité et évolutivité pour les prochaines étapes de la mission.
