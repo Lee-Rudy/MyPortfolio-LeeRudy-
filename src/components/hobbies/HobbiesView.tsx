@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import classNames from "classnames";
 
 import { Column } from "@once-ui-system/core";
@@ -20,8 +21,15 @@ export default function HobbiesView() {
             })}
             tabIndex={0}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className={styles.image} src={hobby.image} alt={hobby.alt} loading="lazy" />
+            <Image
+              className={styles.image}
+              src={hobby.image}
+              alt={hobby.alt}
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              quality={75}
+              priority={hobby.name === DEFAULT_OPEN}
+            />
             <div className={styles.overlay} />
             <div className={styles.content}>
               <span className={styles.name}>{hobby.name}</span>
